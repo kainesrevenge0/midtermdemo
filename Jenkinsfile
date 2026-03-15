@@ -2,13 +2,6 @@ pipeline {
     agent any
 
     stages {
-
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/kainesrevenge0/midtermdemo.git'
-            }
-        }
-
         stage('Build') {
             steps {
                 sh './mvnw clean package'
@@ -26,6 +19,5 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
-
     }
 }
